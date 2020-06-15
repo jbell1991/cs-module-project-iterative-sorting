@@ -4,23 +4,48 @@ def selection_sort(arr):
     for i in range(0, len(arr) - 1):
         cur_index = i
         smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
-
-        # TO-DO: swap
-        # Your code here
-
+        # loop through unsorted elements
+        for j in range(cur_index + 1, len(arr)):
+            # if the element is < the current smallest
+            if arr[j] < arr[smallest_index]:
+                # set that element as the new current smallest
+                smallest_index = j
+                # print(arr) # uncomment to show how iterations of array changing
+        # swap the minimum with the first unsorted position
+        arr[smallest_index], arr[cur_index] = arr[cur_index], arr[smallest_index]
     return arr
+
+# Test
+
+# arr = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
+
+# print(selection_sort(arr))
 
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     # Your code here
-
-
+    # set swapped = True to enter while loop
+    swapped = True
+    while swapped:
+        # are the elements swapped?
+        swapped = False
+        # loop through n-1 elements because the last element has nothing to its right
+        for i in range(0, len(arr) - 1):
+            left_element = i
+            right_element = i + 1
+            # if left element > right element
+            if arr[left_element] > arr[right_element]: 
+                # swap(left element, right element)
+                arr[left_element], arr[right_element] = arr[right_element], arr[left_element]
+                # set swapped to True to continue while loop until no swaps left
+                swapped = True
+                # print(arr) # uncomment to show iterations of array changing
     return arr
+
+# Test
+
+# print(bubble_sort(arr))
 
 '''
 STRETCH: implement the Count Sort function below
